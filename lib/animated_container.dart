@@ -9,9 +9,9 @@ class AnimatedContainerDemo extends StatefulWidget {
 }
 
 class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
-  double _width = 50, _height = 50;
-  Color _color = Colors.blue;
-  Curve _curve = Curves.fastOutSlowIn;
+  double _width = 50;
+  double _height = 50;
+  Color _color = Colors.green;
   BorderRadius _borderRadius = BorderRadius.circular(8);
 
   @override
@@ -24,6 +24,7 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
           height: _height,
           duration: Duration(milliseconds: 1000),
           decoration: BoxDecoration(color: _color, borderRadius: _borderRadius),
+          curve: Curves.fastOutSlowIn,
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -31,10 +32,10 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
         onPressed: () {
           Random random = Random();
           setState(() {
-            _width = random.nextDouble() * 256;
-            _height = random.nextDouble() * 256;
+            _width = random.nextInt(300).toDouble();
+            _height = random.nextInt(300).toDouble();
             _color = Color.fromRGBO(random.nextInt(256), random.nextInt(256), random.nextInt(256), 1);
-            _borderRadius = BorderRadius.circular(random.nextDouble() * 16);
+            _borderRadius = BorderRadius.circular(random.nextInt(100).toDouble());
           });
         },
       ),
